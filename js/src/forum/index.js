@@ -3,10 +3,11 @@ import { extend } from 'flarum/common/extend';
 import IndexPage from 'flarum/forum/components/IndexPage';
 import PostStream from 'flarum/forum/components/PostStream';
 import Page from 'flarum/common/components/Page'
-import HeaderSecondary from 'flarum/forum/components/HeaderSecondary'
+import HeaderPrimary from 'flarum/forum/components/HeaderPrimary';
+import WelcomeHero from 'flarum/forum/components/WelcomeHero';
 
 app.initializers.add('justoverclock/christmas-snow-effect', () => {
-  extend(HeaderSecondary.prototype, 'oninit', function (){
+  extend(HeaderPrimary.prototype, 'oninit', function (){
     const baseUrl = app.forum.attribute('baseUrl') + '/assets/extensions/justoverclock-christmas-snow-effect/jquery.snow.js';
     var s = document.createElement("script");
     s.type = "text/javascript";
@@ -30,7 +31,7 @@ app.initializers.add('justoverclock/christmas-snow-effect', () => {
       spawnInterval: 800,
 
       // jQuery element to apply snow effect on (should work on any block element) (default: body)
-      target: jQuery(".container"),
+      target: jQuery("div#app"),
 
       //elements to use in generating snow effect
       elements	: [
