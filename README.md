@@ -4,6 +4,10 @@
 
 A [Flarum](http://flarum.org) extension. It&#39;s christmas time also for Flarum!
 
+## PR are welcome! (i've not tested this extension well)
+
+![YhAVGhRE9O](https://user-images.githubusercontent.com/79002016/140987838-ed42d709-f0c9-4854-90cc-d2f3644ba398.gif)
+
 ## Installation
 
 Install with composer:
@@ -16,12 +20,11 @@ composer require justoverclock/christmas-snow-effect:"*"
 
 ```sh
 composer update justoverclock/christmas-snow-effect:"*"
-php flarum migrate
 php flarum cache:clear
 ```
 
 ## Links
 
 - [Packagist](https://packagist.org/packages/justoverclock/christmas-snow-effect)
-- [GitHub](https://github.com/justoverclock/christmas-snow-effect)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [GitHub](https://github.com/justoverclockl/christmas-snow-effect)
+
