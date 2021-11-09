@@ -1,10 +1,6 @@
 import app from 'flarum/forum/app';
 import { extend } from 'flarum/common/extend';
-import IndexPage from 'flarum/forum/components/IndexPage';
-import PostStream from 'flarum/forum/components/PostStream';
-import Page from 'flarum/common/components/Page'
 import HeaderPrimary from 'flarum/forum/components/HeaderPrimary';
-import WelcomeHero from 'flarum/forum/components/WelcomeHero';
 
 app.initializers.add('justoverclock/christmas-snow-effect', () => {
   extend(HeaderPrimary.prototype, 'oninit', function (){
