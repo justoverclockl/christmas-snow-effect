@@ -1,50 +1,88 @@
 import app from 'flarum/forum/app';
-import { extend } from 'flarum/common/extend';
-import HeaderPrimary from 'flarum/forum/components/HeaderPrimary';
+import { extend, override } from 'flarum/common/extend';
+import Page from 'flarum/common/components/Page'
+import IndexPage from 'flarum/forum/components/IndexPage'
+import PostStream from 'flarum/forum/components/PostStream'
+
 
 app.initializers.add('justoverclock/christmas-snow-effect', () => {
-  extend(HeaderPrimary.prototype, 'oninit', function (){
-    const baseUrl = app.forum.attribute('baseUrl') + '/assets/extensions/justoverclock-christmas-snow-effect/jquery.snow.js';
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src = baseUrl;
-    $("head").append(s);
-
-    var snowEffectInterval = jQuery.fn.snow({
-      // min size of element (default: 20)
-      minSize: 4,
-
-      // max size of element (default: 50)
-      maxSize: 10,
-
-      // flake fall time multiplier (default: 20)
-      fallTimeMultiplier: 20,
-
-      // flake fall time difference (default: 10000)
-      fallTimeDifference: 30000,
-
-      // interval (miliseconds) between new element spawns (default: 500)
-      spawnInterval: 800,
-
-      // jQuery element to apply snow effect on (should work on any block element) (default: body)
-      target: jQuery("div#app"),
-
-      //elements to use in generating snow effect
-      elements	: [
-
-        {
-          // html element to be spawned for this element
-          html: '<i class="fas fa-snowflake" aria-hidden="true"></i>',
-          // hex color for this element - works only for font based icons
-          color: '#cc2037'
-        },
-        {
-          // html element to be spawned for this element
-          html: '<i class="fas fa-snowflake" aria-hidden="true"></i>',
-          // hex color for this element - works only for font based icons
-          color: '#ffffff'
-        },
-      ]
-    });
+  extend(PostStream.prototype, 'view', function (vdom) {
+    if (vdom.children && vdom.children.splice) {
+      const insert = <div className="snowflakes" aria-hidden="true">
+        <div className="snowflake">
+          ❅
+        </div>
+        <div className="snowflake">
+          ❅
+        </div>
+        <div className="snowflake">
+          ❆
+        </div>
+        <div className="snowflake">
+          ❄
+        </div>
+        <div className="snowflake">
+          ❅
+        </div>
+        <div className="snowflake">
+          ❆
+        </div>
+        <div className="snowflake">
+          ❄
+        </div>
+        <div className="snowflake">
+          ❅
+        </div>
+        <div className="snowflake">
+          ❆
+        </div>
+        <div className="snowflake">
+          ❄
+        </div>
+      </div>
+      vdom.children.splice(1, 0, insert);
+    }
   })
+
+  override(IndexPage.prototype, 'hero', function (original) {
+    return (
+      <>
+        {original()}
+        <div className="snowflakes" aria-hidden="true">
+          <div className="snowflake">
+            ❅
+          </div>
+          <div className="snowflake">
+            ❅
+          </div>
+          <div className="snowflake">
+            ❆
+          </div>
+          <div className="snowflake">
+            ❄
+          </div>
+          <div className="snowflake">
+            ❅
+          </div>
+          <div className="snowflake">
+            ❆
+          </div>
+          <div className="snowflake">
+            ❄
+          </div>
+          <div className="snowflake">
+            ❅
+          </div>
+          <div className="snowflake">
+            ❆
+          </div>
+          <div className="snowflake">
+            ❄
+          </div>
+        </div>
+      </>
+    );
+  });
 });
+
+
